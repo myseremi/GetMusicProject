@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html data-ng-app lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="music, streaming, streaming service, iTunes, artist, artists">
+    <meta name="author" content="Serena Sina">
+    <title>GET MUSIC</title>
+
+    <!-- Stylesheets -->
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- AngularJs -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.js">
+    </script>
+    <!-- the script which will contain the iTunesController -->
+    <script src="itunes_controller.js"></script>
+    <!-- Store script -->
+    <script src="store.js" async></script>
+
+    <!-- Fontawesome -->
+    <script src="https://kit.fontawesome.com/3a2f8a23b7.js" crossorigin="anonymous"></script>
+    <!-- Fonts -->
+    <link rel="stylesheet" href="/font/stylesheet.css" type="text/css"/>
+    <link rel="stylesheet" href="https://use.typekit.net/zjs0dpp.css">
+    <!-- Custom style -->
+    <link rel="stylesheet" href="style.css" type="text/css">
+
+
+</head>
+
+<body>
+    <main data-ng-controller="iTunesController">
+        <!-- Navbar content -->
+        <nav class="navbar">
+            <a href="index.html" class="logo"><img src="../img/logo.svg" alt="logo"></a>
+            <!-- Menu icon -->
+            <span class="menu" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+        </nav>
+
+        <!-- Shop form -->
+        <section class="container-fluid pt-5 px-0">
+            <div class="form" >
+                <!-- Open modal when submitted -->
+                <form class="shop-form py-2 px-5" onsubmit="openModal()" id="myForm">
+                    <h2 class="py-3">Billing information</h2>
+                    <div class="row p-3">
+                        <div class="col">
+                            <label for="validationDefault01">Forename*</label>
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="John" id="validationDefault01"
+                                required>
+                        </div>
+                        <div class="col">
+                            <label for="validationDefault02">Address*</label>
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="75 Park Lane" id="validationDefault02"
+                                required>
+                        </div>
+                    </div>
+                    <div class="row p-3">
+                        <div class="col">
+                            <label for="validationDefault03">Surname*</label>
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Smith" id="validationDefault03"
+                                required>
+                        </div>
+                        <div class="col">
+                            <label for="validationDefault04">Postcode*</label>
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="A9 9AA" id="validationDefault04"
+                                required>
+                        </div>
+                    </div>
+                    <div class="flexed row p-3">
+                        <div class="col-6 col-sm-3">
+                            <label for="validationDefault05">Email*</label>
+                        </div>
+                        <div class="col-6 col-sm-3">
+                            <input type="email" class="form-control" placeholder="myaddress@mail.com"
+                                id="validationDefault05" required>
+                        </div>
+                    </div>
+
+                    <div class="row py-3">
+                        <h2>Payment</h2>
+                    </div>
+                    <div class="row p-3">
+                        <div class="card-deets col">
+                            <label for="validationDefault07">Name on card*</label>
+                        </div>
+                        <div class="card-deets col">
+                            <input type="text" class="form-control" placeholder="J SMITH" id="validationDefault07"
+                                required>
+                        </div>
+                        <div class="card-deets col">
+                            <label for="validationDefault08">Card number*</label>
+                        </div>
+                        <div class="card-deets col">
+                            <input type="text" class="form-control" placeholder="1234 5678 9000 0000"
+                                id="validationDefault08" required>
+                        </div>
+                    </div>
+
+                    <div class=" row p-3">
+                        <div class="card-deets col">
+                            <label for="validationDefault09">Expiry date*</label>
+                        </div>
+                        <div class="card-deets col">
+                            <input type="text" class="form-control" placeholder="mm/yy" id="validationDefault09"
+                                required>
+                        </div>
+                        <div class="card-deets col">
+                            <label for="validationDefault10">CVV*</label>
+                        </div>
+                        <div class="card-deets col">
+                            <input type="text" class="form-control" placeholder="123" id="validationDefault10" required>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-end py-3">
+                        <button class="slide_from_bottom " type="submit" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">Submit</button>
+                    </div>
+                </form>
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content bg-dark">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Purchase status</h5>
+                            </div>
+                            <div class="modal-body">
+                                <p>Purchase completed!</p>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="index.html" class="btn btn-dark" data-bs-dismiss="modal" role="button">Back to
+                                    home</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Menu -->
+        <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="overlay-content">
+                <a href="index.html">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Bootstrap scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+
+    <!-- Menu slide script -->
+    <script>
+        function openNav() {
+            document.getElementById("myNav").style.width = "100%";
+        }
+
+        function closeNav() {
+            document.getElementById("myNav").style.width = "0%";
+        }
+
+        // modal
+        $('#myForm').on('submit', function (e) {
+            $('#myModal').modal('show');
+            e.preventDefault();
+        });
+    </script>
+
+
+</body>
+
+</html>

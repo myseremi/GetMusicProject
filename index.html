@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html data-ng-app lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="music, streaming, streaming service, iTunes, artist, artists">
+    <meta name="author" content="Serena Sina">
+    <title>GET MUSIC</title>
+
+    <!-- Stylesheets -->
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- AngularJs -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.js">
+    </script>
+    <!-- the script which will contain the iTunesController -->
+    <script src="itunes_controller.js"></script>
+
+    <!-- Fontawesome -->
+    <script src="https://kit.fontawesome.com/3a2f8a23b7.js" crossorigin="anonymous"></script>
+    <!-- Fonts -->
+    <link rel="stylesheet" href="/font/stylesheet.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.typekit.net/zjs0dpp.css">
+    <!-- Custom style -->
+    <link rel="stylesheet" href="style.css" type="text/css">
+
+
+</head>
+
+<body>
+    <main data-ng-controller="iTunesController">
+        <!-- Navbar content -->
+        <nav class="navbar">
+            <!-- Logo -->
+            <div class="logo">
+                <a href="index.html"><img src="../img/logo.svg" alt="logo"></a>
+            </div>
+
+            <div class="search-artist">
+                <!-- Search bar -->
+                <form class="result--section" name="search" data-ng-submit="searchiTunes(artist)">
+                    <!-- Artist/band name required, use the ng-model directive to pass the artist name back into the  controller/model -->
+                    <button class="search"><i class="fas fa-search"></i></button>
+                    <input type="text" class="input-search" placeholder="Search artist..." data-ng-model="artist"
+                        id="focus-input" />
+                </form>
+                <!-- Menu icon -->
+                <span class="menu" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+            </div>
+        </nav>
+
+        <!-- Search table -->
+        <div class="search-results container-fluid pt-5">
+            <!-- show an error if there's a search error -->
+            {{ error }}
+            <!-- add form, use ng-submit directive to call  searchiTunes, pass the artist -->
+
+            <!-- ng-show directive to decide when to show results. In this case, we will show the songs when there are songs to show. -->
+            <table data-ng-show="songs" class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Album</th>
+                        <th scope="col">Track</th>
+                        <th scope="col">Preview&nbsp;</th>
+                        <th scope="col">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- ng-repeat directive to loop over each song in the songs list. -->
+                    <!-- The song data is loaded into objects for easy access. Just call on the attributes you need. -->
+                    <tr data-ng-repeat="song in songs">
+                        <!-- ng-src lets you load imgs when data is present. -->
+                        <td><img data-ng-src="{{song.artworkUrl100}}" alt="{{song.collectionName}}" /></td>
+                        <td>{{song.trackName}}</td>
+                        <td><a data-ng-href="{{song.previewUrl}}" class="play">Play</a></td>
+                        <td>{{song.collectionPrice}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Playlist section -->
+        <section class="container-fluid pt-5">
+            <div class="row">
+                <h2>Playlists</h2>
+            </div>
+            <div class="row pt-4">
+                <div class="col-sm">
+                    <div class="row">
+                        <img src="img/album1.jpg" alt="#" class="album mx-auto d-block">
+                    </div>
+                    <div class="row">
+                        <p class="mx-auto d-block pt-4">Today’s hits</p>
+                    </div>
+                </div>
+
+                <div class="col-sm">
+                    <div class="row">
+                        <img src="img/Album2.jpg" alt="#" class="album mx-auto d-block">
+                    </div>
+                    <div class="row">
+                        <p class="mx-auto d-block pt-4">Pop Chill</p>
+                    </div>
+                </div>
+
+                <div class="col-sm">
+                    <div class="row">
+                        <img src="img/Album3.webp" alt="#" class="album mx-auto d-block">
+                    </div>
+                    <div class="row">
+                        <p class="mx-auto d-block pt-4">Rap Life</p>
+                    </div>
+                </div>
+
+                <div class="col-sm">
+                    <div class="row">
+                        <img src="img/Album4.jpg" alt="#" class="album mx-auto d-block">
+                    </div>
+                    <div class="row">
+                        <p class="mx-auto d-block pt-4">A-List Pop</p>
+                    </div>
+                </div>
+
+                <div class="col-sm">
+                    <div class="row">
+                        <img src="img/album5.jpg" alt="#" class="album mx-auto d-block">
+                    </div>
+                    <div class="row">
+                        <p class="mx-auto d-block pt-4">danceXL</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Artist section -->
+        <section class="container-fluid pt-5">
+            <div class="row">
+                <h2>Artists</h2>
+            </div>
+            <div class="row pt-4">
+                <div class="col-sm">
+                    <div class="row">
+                        <img src="img/art1.webp" alt="#" class="album mx-auto d-block">
+                    </div>
+                    <div class="row">
+                        <p class="mx-auto d-block pt-4">Lady Gaga</p>
+                    </div>
+                </div>
+
+                <div class="col-sm">
+                    <div class="row">
+                        <img src="img/art2.webp" alt="#" class="album mx-auto d-block">
+                    </div>
+                    <div class="row">
+                        <p class="mx-auto d-block pt-4">aespa</p>
+                    </div>
+                </div>
+
+                <div class="col-sm">
+                    <div class="row">
+                        <img src="img/art3.webp" alt="#" class="album mx-auto d-block">
+                    </div>
+                    <div class="row">
+                        <p class="mx-auto d-block pt-4">Brandi Carlile</p>
+                    </div>
+                </div>
+
+                <div class="col-sm">
+                    <div class="row">
+                        <img src="img/art4.jpg" alt="#" class="album mx-auto d-block">
+                    </div>
+                    <div class="row">
+                        <p class="mx-auto d-block pt-4">Farruko</p>
+                    </div>
+                </div>
+
+                <div class="col-sm">
+                    <div class="row">
+                        <img src="img/art5.jpg" alt="#" class="album mx-auto d-block">
+                    </div>
+                    <div class="row">
+                        <p class="mx-auto d-block pt-4">Kedr Livanskiy</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sliding menu -->
+        <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="overlay-content">
+                <a href="index.html">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Bootstrap scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+
+    <script>
+        // Menu slide 
+        function openNav() {
+            document.getElementById("myNav").style.width = "100%";
+        }
+
+        function closeNav() {
+            document.getElementById("myNav").style.width = "0%";
+        }
+
+        // Focus on seach bar
+        document.querySelector('button').addEventListener('click', function () {
+            document.getElementById('focus-input').focus();
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html data-ng-app lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="music, streaming, streaming service, iTunes, artist, artists">
+    <meta name="author" content="Serena Sina">
+    <title>GET MUSIC</title>
+
+    <!-- Stylesheets -->
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- AngularJs -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.js">
+    </script>
+    <!-- the script which will contain the iTunesController -->
+    <script src="itunes_controller.js"></script>
+
+    <!-- Fontawesome -->
+    <script src="https://kit.fontawesome.com/3a2f8a23b7.js" crossorigin="anonymous"></script>
+    <!-- Fonts -->
+    <link rel="stylesheet" href="/font/stylesheet.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.typekit.net/zjs0dpp.css">
+    <!-- Custom style -->
+    <link rel="stylesheet" href="style.css" type="text/css">
+
+
+</head>
+
+<body>
+    <main data-ng-controller="iTunesController">
+        <!-- Navbar content -->
+        <nav class="navbar">
+            <!-- Change to svg please -->
+            <a href="index.html" class="logo"><img src="img/logo.svg" alt="logo"></a>
+
+            <!-- Menu icon -->
+            <span class="menu" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+        </nav>
+
+        <!-- Cards -->
+        <section class="container-fluid pt-5">
+            <div class="row">
+                <h2>Shop</h2>
+            </div>
+            <div class="row pt-4">
+                <!-- Card section -->
+                <div class="col-sm">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <img class="card shop-item-image" src="img/card5.png" alt="#">
+                        </div>
+                        <div class="col-sm-6 d-flex justify-content-center">
+                            <div class="d-flex h-100 text-center align-items-center">
+                                <span class="shop-item-title" style="display: none;">iTunes Gift Card - £5</span>
+                                <span class="shop-item-price" style="display: none;">£5</span>
+                                <button class="slide_from_bottom shop-item-button">Buy</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card section -->
+                <div class="col-sm">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <img class="card shop-item-image" src="img/card10.png" alt="#">
+                        </div>
+                        <div class="col-sm-6 d-flex justify-content-center">
+                            <div class="d-flex h-100 text-center align-items-center">
+                                <span class="shop-item-title" style="display: none;">iTunes Gift Card - £10</span>
+                                <span class="shop-item-price" style="display: none;">£10</span>
+                                <button class="slide_from_bottom shop-item-button">Buy</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row pt-4">
+                <div class="col-sm">
+                <!-- Card section -->
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <img class="card shop-item-image" src="img/card15.png" alt="#">
+                        </div>
+                        <div class="col-sm-6 d-flex justify-content-center">
+                            <div class="d-flex h-100 text-center align-items-center">
+                                <span class="shop-item-title" style="display: none;">iTunes Gift Card - £15</span>
+                                <span class="shop-item-price" style="display: none;">£15</span>
+                                <button class="slide_from_bottom shop-item-button">Buy</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm"></div>
+            </div>
+        </section>
+        
+        <!-- Shopping cart -->
+        <section class="container-fluid pt-5 content-section">
+            <h2 class="section-header">CART</h2>
+            <div class="cart-row">
+                <span class="cart-item cart-header cart-column">Item</span>
+                <span class="cart-price cart-header cart-column">Price</span>
+                <span class="cart-quantity cart-header cart-column">Quantity</span>
+            </div>
+            <div class="cart-items">
+            </div>
+            <div class="cart-total">
+                <strong class="cart-total-title">Total</strong>
+                <span class="cart-total-price">£0</span>
+            </div>
+            <button class="slide_from_bottom btn-purchase" type="button">PURCHASE</button>
+        </section>
+
+        <!-- Menu -->
+        <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="overlay-content">
+                <a href="index.html">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Bootstrap scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <!-- Store script -->
+    <script src="store.js"></script>
+    <!-- Menu slide script -->
+    <script>
+        function openNav() {
+            document.getElementById("myNav").style.width = "100%";
+        }
+
+        function closeNav() {
+            document.getElementById("myNav").style.width = "0%";
+        }
+    </script>
+
+</body>
+
+</html>

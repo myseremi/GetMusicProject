@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html data-ng-app lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="music, streaming, streaming service, iTunes, artist, artists">
+    <meta name="author" content="Serena Sina">
+    <title>GET MUSIC</title>
+
+    <!-- Stylesheets -->
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- AngularJs -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.js">
+    </script>
+    <!-- the script which will contain the iTunesController -->
+    <script src="itunes_controller.js"></script>
+
+    <!-- Fontawesome -->
+    <script src="https://kit.fontawesome.com/3a2f8a23b7.js" crossorigin="anonymous"></script>
+    <!-- Fonts -->
+    <link rel="stylesheet" href="/font/stylesheet.css" type="text/css">
+    <link rel="stylesheet" href="https://use.typekit.net/zjs0dpp.css">
+    <!-- Custom style -->
+    <link rel="stylesheet" href="style.css" type="text/css">
+
+
+</head>
+
+<body>
+    <main data-ng-controller="iTunesController">
+        <!-- Navbar content -->
+        <nav class="navbar">
+            <!-- logo -->
+            <a href="index.html" class="logo"><img src="../img/logo.svg" alt="logo"></a>
+
+            <!-- Menu icon -->
+            <span class="menu" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+        </nav>
+
+
+        <section class="container-fluid pt-5 px-0 ">
+            <!-- Contact info -->
+            <div class="row">
+                <div class="col">
+                    <h2 class="py-3">Contact Us</h2>
+                    <p>61 Redcliffe Way<br>
+                        WOODLEIGH<br>
+                        TQ7 0BW<br>
+                        getmusic@email.com</p>
+                </div>
+                <!-- Contact form -->
+                <div class="col form">
+                    <form class="py-2 px-5" onsubmit="openModal()" id="myForm">
+                        <label class="py-3" for="validationDefault11">Name*</label>
+                        <input type="text" class="form-control" placeholder="John Smith" id="validationDefault11"
+                            required>
+                        <label class="py-3" for="validationDefault12">E-mail*</label>
+                        <input type="email" class="form-control" placeholder="myaddress@mail.com"
+                            id="validationDefault12" required>
+                        <label class="py-3" for="validationDefault13">Reason for contacting*</label>
+                        <select id="validationDefault13" class="form-control" required>
+                            <option selected disabled value="">Choose...</option>
+                            <option>Payment issue</option>
+                            <option>Gift code not working</option>
+                            <option>Other (please specify underneath)</option>
+                        </select>
+                        <label class="py-3" for="validationDefault14">Other comments*</label>
+                        <textarea class="form-control" id="validationDefault14" rows="3" required></textarea>
+                        <!-- Modal button-->
+                        <div class="row d-flex justify-content-end py-3">
+                            <button class="slide_from_bottom " type="submit" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">Submit</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content bg-dark">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Contact us</h5>
+                            </div>
+                            <div class="modal-body">
+                                <p>Your message was sent to our support team. You will receive a reply to your email in
+                                    the next 5 working days.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="index.html" class="btn btn-dark" data-bs-dismiss="modal" role="button">Back
+                                    to home</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu -->
+        <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="overlay-content">
+                <a href="index.html">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Bootstrap scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <!-- Menu slide script -->
+    <script>
+        function openNav() {
+            document.getElementById("myNav").style.width = "100%";
+        }
+
+        function closeNav() {
+            document.getElementById("myNav").style.width = "0%";
+        }
+
+        // modal
+        $('#myForm').on('submit', function (e) {
+            $('#myModal').modal('show');
+            e.preventDefault();
+        });
+    </script>
+</body>
+
+</html>
